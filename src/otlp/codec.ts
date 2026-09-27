@@ -77,7 +77,7 @@ export function contentTypeFor(encoding: OtlpEncoding) {
 }
 
 export function decodeExportRequest(signal: OtlpSignal, encoding: OtlpEncoding, bytes: Uint8Array) {
-  const config = SIGNALS[signal]
+  const { requestType } = SIGNALS[signal]
 
   try {
     let message: object
@@ -88,12 +88,12 @@ export function decodeExportRequest(signal: OtlpSignal, encoding: OtlpEncoding, 
         throw new OtlpProtocolError(400, 'OTLP JSON body must be an object')
       }
 
-      message = config.requestType.fromObject(parsed)
+      message = requestType.fromObject(parsed)
     } else {
-      message = config.requestType.decode(bytes)
+      message = requestType.decode(bytes)
     }
 
-    const body = config.requestType.toObject(message, {
+    const body = requestType.toObject(message, {
       defaults: false,
       enums: String,
       longs: String,
@@ -117,12 +117,12 @@ export function decodeExportRequest(signal: OtlpSignal, encoding: OtlpEncoding, 
 export type DecodedExport = ReturnType<typeof decodeExportRequest>
 
 export function encodeSuccessResponse(signal: OtlpSignal, encoding: OtlpEncoding) {
-  const config = SIGNALS[signal]
+  const { responseType } = SIGNALS[signal]
   switch (encoding) {
     case 'json':
-      return new TextEncoder().encode('{}')
+      return responseType.toObject({})
     case 'protobuf':
-      return config.responseType.encode({}).finish()
+      return responseType.encode({}).finish()
     default:
       encoding satisfies never
   }
