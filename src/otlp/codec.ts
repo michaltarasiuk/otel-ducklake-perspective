@@ -120,7 +120,7 @@ export function encodeSuccessResponse(signal: OtlpSignal, encoding: OtlpEncoding
   const { responseType } = SIGNALS[signal]
   switch (encoding) {
     case 'json':
-      return responseType.toObject({})
+      return new TextEncoder().encode('{}')
     case 'protobuf':
       return responseType.encode({}).finish()
     default:
