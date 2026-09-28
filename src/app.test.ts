@@ -1,6 +1,6 @@
 import { gzipSync } from 'node:zlib'
 
-import { afterEach, describe, expect, test } from 'vitest'
+import { afterEach, describe, expect, test } from 'bun:test'
 
 import logsFixture from '../fixtures/otlp/logs.json' with { type: 'json' }
 import metricsFixture from '../fixtures/otlp/metrics.json' with { type: 'json' }

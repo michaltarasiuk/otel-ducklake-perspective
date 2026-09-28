@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "lib": ["ES2022"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext"],
     "strict": true,
     "skipLibCheck": true,
     "noEmit": true,
@@ -13,12 +13,12 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "noUncheckedIndexedAccess": true,
-    "types": ["node"],
+    "types": ["bun"],
     "rootDir": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*.ts", "vitest.config.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

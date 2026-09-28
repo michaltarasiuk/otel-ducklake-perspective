@@ -1,5 +1,5 @@
 import { ContentType } from './content-type.js'
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test } from 'bun:test'
 
 describe('ContentType', () => {
   test('initializes with an empty string', () => {
