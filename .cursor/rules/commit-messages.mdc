@@ -1,0 +1,21 @@
+---
+description: Commit message style for this repository
+alwaysApply: true
+---
+
+# Commit messages
+
+- Entire subject line in **lowercase**
+- **No trailing period** (or other sentence-ending punctuation)
+- Concise, imperative mood when possible (e.g. `migrate runtime to bun`)
+- Prefer 1 short line; optional body only when needed for context
+
+```text
+# bad
+Migrate runtime from Node/tsx to Bun.
+Add OTLP gzip support.
+
+# good
+migrate runtime from node/tsx to bun
+add otlp gzip support
+```
